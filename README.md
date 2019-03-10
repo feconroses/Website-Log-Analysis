@@ -27,7 +27,7 @@ Once you have installed Vagrant and Virtualbox, run the Vagrantfile to configure
 
 # Running the script
 
-First, download the data related to this project from [here](https://d17h27t6h515a5.cloudfront.net/topher/2016/August/57b5f748_newsdata/newsdata.zip)
+First, download the data related to this project from [here](https://d17h27t6h515a5.cloudfront.net/topher/2016/August/57b5f748_newsdata/newsdata.zip).
 
 You will need to unzip this file after downloading it. The file inside is called newsdata.sql. Put this file into the vagrant directory, which is shared with your virtual machine.
 
@@ -38,9 +38,7 @@ To build the reporting tool, you'll need to load the site's data into your local
 
 Then run: `psql -d news -f create_views.sql` to import the SQL views to the news database. You'll would only need to do this once, when you initially set up the database.
 
-Running the Script
-
-Run the following file from the command line:
+Finally, run the following file from the command line:
 `python log-analysis.py`
 
 Once you ran this command, the program will start processing the database to answering the questions mentioned above.
