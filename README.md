@@ -2,8 +2,6 @@
 
 Python script that uses psycopg2 to query a mock PostgreSQL database for a fictional news website to create reports on different visitor stats.
 
-The news database has 3 tables: articles, log, and authors. 
-
 This script is useful to answer the following questions:
 
 1. What are the most popular three articles of all time?
@@ -14,8 +12,8 @@ This script is useful to answer the following questions:
 
 To run this script, the following resources are needed: 
 
-[Vagrant](https://www.vagrantup.com/downloads.html)
-[Virtualbox](https://www.virtualbox.org/wiki/Download_Old_Builds_5_1)
+* [Vagrant](https://www.vagrantup.com/downloads.html)
+* [Virtualbox](https://www.virtualbox.org/wiki/Download_Old_Builds_5_1)
 
 You can download the Vagrantfile to configure the virtual machine [here](https://github.com/udacity/fullstack-nanodegree-vm/blob/master/vagrant/Vagrantfile)
 
@@ -27,11 +25,13 @@ This file will set up and run the project in an environment with the following r
 
 Once you have installed Vagrant and Virtualbox, run the Vagrantfile to configure the environment. Then, run vagrant up to start the virtual machine and vagrant ssh to connect to it.
 
-# Download the data
+# Running the script
 
-Next, download the data [here](https://d17h27t6h515a5.cloudfront.net/topher/2016/August/57b5f748_newsdata/newsdata.zip)
+First, download the data related to this project from [here](https://d17h27t6h515a5.cloudfront.net/topher/2016/August/57b5f748_newsdata/newsdata.zip)
 
 You will need to unzip this file after downloading it. The file inside is called newsdata.sql. Put this file into the vagrant directory, which is shared with your virtual machine.
+
+The newsdata database has 3 tables: articles, log, and authors. 
 
 To build the reporting tool, you'll need to load the site's data into your local database. To load the data, cd into the vagrant directory and use the command: 
 `psql -d news -f newsdata.sql`
