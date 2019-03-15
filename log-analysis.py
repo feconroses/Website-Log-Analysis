@@ -37,6 +37,12 @@ def execute_query(query):
         print(e)
 
 
+def print_results(results):
+    """function for printing the results from a 2 column table."""
+    for result in results:
+        print("{} - {} views".format(result[0], result[1]))
+
+
 def most_popular_articles():
     """function for finding the 3 most popular articles."""
     # count by title
@@ -55,8 +61,7 @@ def most_popular_articles():
 Which articles have been accessed the most? \n')
 
     # print result of the top 3 articles
-    for article in results:
-        print("{} - {} views".format(article[0], article[1]))
+    print_results(results)
 
 
 '''
@@ -92,8 +97,7 @@ def most_popular_authors():
 time?\n')
 
     # print result
-    for authors in results:
-        print("{} - {} views".format(authors[0], authors[1]))
+    print_results(results)
 
 
 '''
