@@ -1,4 +1,4 @@
-"""!/usr/bin/env python3."""
+#!/usr/bin/env python3
 # coding: utf-8
 # by Federico Pascual
 # Udacity rocks
@@ -22,12 +22,15 @@ results = ''
 
 def execute_query(query):
     """Helper function for running the SQL queries."""
-    conn = psycopg2.connect("dbname=news")
-    cursor = conn.cursor()
-    cursor.execute(query)
-    global results
-    results = cursor.fetchall()
-    conn.close()
+    try:
+        conn = psycopg2.connect("dbname=news")
+        cursor = conn.cursor()
+        cursor.execute(query)
+        global results
+        results = cursor.fetchall()
+        conn.close()
+    except psycopg2.DatabaseError as e:
+        print(e)
 
 
 def most_popular_articles():
@@ -38,7 +41,8 @@ def most_popular_articles():
         FROM articles JOIN log
         ON REPLACE(log.path, '/article/', '') = articles.slug \
         GROUP BY articles.title
-        ORDER BY views DESC;"""
+        ORDER BY views DESC
+        LIMIT 3;"""
 
     execute_query(query)
 
@@ -47,13 +51,8 @@ def most_popular_articles():
 Which articles have been accessed the most? \n')
 
     # print result of the top 3 articles
-    article_count = 0
     for article in results:
-        article_count += 1
-        if article_count <= 3:
-            print(str((article)[0]) + ' — ' + str((article)[1]) + ' views')
-        else:
-            break
+        print("{} - {} views".format(article[0], article[1]))
 
 
 '''
@@ -89,9 +88,8 @@ def most_popular_authors():
 time?\n')
 
     # print result
-    for article in results:
-        print(str((article)[0]) + ' — ' + str(
-            (article)[1]) + ' views')
+    for authors in results:
+        print("{} - {} views".format(authors[0], authors[1]))
 
 
 '''
